@@ -20,8 +20,9 @@ func holder() (sdf.SDF3, error) {
 	width := 18.0
 	length := 33.47
 
-	trayHeight := 6.0
+	trayHeight := 5.0
 	pinClearance := 2.8
+	pinOffset := 0.15
 	wallThickness := 1.0
 
 	slotHeight := 12.0
@@ -103,14 +104,14 @@ func holder() (sdf.SDF3, error) {
 	pinBoxLeft := sdf.Transform3D(pinBox, sdf.Translate3d(sdf.V3{
 		X: -width/2 + pinClearance/2,
 		Y: wallThickness - pinBox.BoundingBox().Size().Y/2,
-		Z: pinBox.BoundingBox().Size().Z / 2}))
+		Z: pinOffset + pinBox.BoundingBox().Size().Z/2}))
 
 	tray = sdf.Difference3D(tray, pinBoxLeft)
 
 	pinBoxRight := sdf.Transform3D(pinBox, sdf.Translate3d(sdf.V3{
 		X: width/2 - pinClearance/2,
 		Y: wallThickness - pinBox.BoundingBox().Size().Y/2,
-		Z: pinBox.BoundingBox().Size().Z / 2}))
+		Z: pinOffset + pinBox.BoundingBox().Size().Z/2}))
 
 	tray = sdf.Difference3D(tray, pinBoxRight)
 
@@ -127,7 +128,7 @@ func holder() (sdf.SDF3, error) {
 	pinMiddleBox = sdf.Transform3D(pinMiddleBox, sdf.Translate3d(sdf.V3{
 		X: -middlePinWidth / 2,
 		Y: -middlePinPos,
-		Z: trayHeight / 2}))
+		Z: pinOffset + trayHeight/2}))
 
 	tray = sdf.Difference3D(tray, pinMiddleBox)
 	/*
@@ -186,7 +187,7 @@ func holder() (sdf.SDF3, error) {
 
 	switchCutout, err := sdf.Box3D(sdf.V3{
 		X: 12,
-		Y: slotLength + shieldLength - slotCutoutThickness,
+		Y: 5.3,
 		Z: 4.54,
 	}, 0)
 
@@ -213,7 +214,7 @@ func holder() (sdf.SDF3, error) {
 
 	switchHole = sdf.Transform3D(switchHole, sdf.Translate3d(sdf.V3{
 		X: 0,
-		Y: switchHole.BoundingBox().Size().Y / 2,
+		Y: switchHole.BoundingBox().Size().Y/2 + slotOffsetY,
 		Z: swCoHeight}))
 	tray = sdf.Difference3D(tray, switchHole)
 
