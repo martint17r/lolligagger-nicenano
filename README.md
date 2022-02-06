@@ -4,6 +4,8 @@ This is a nice!nano holder for the lolligagger tray mount for [Joshua Shreves
 Dactyl Manuform python port](https://github.com/joshreve/dactyl-keyboard) if you
 enable ```controller_mount_type = 'EXTERNAL'```.
 
+This is a work in progress, the nice!nano does not fit that well!
+
 ## Printing
 
 Print it with 0.15mm layer height on a 0.4mm nozzle with stock settings.

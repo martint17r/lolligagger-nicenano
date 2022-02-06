@@ -156,7 +156,7 @@ func holder() (sdf.SDF3, error) {
 	usbCutout, err := sdf.Box3D(sdf.V3{
 		X: 11.5,
 		Y: slotLength + shieldLength - slotCutoutThickness,
-		Z: 10 + trayBottomHeight,
+		Z: 11 + trayBottomHeight,
 	}, 0)
 
 	if err != nil {
@@ -172,7 +172,7 @@ func holder() (sdf.SDF3, error) {
 	usbHole, err := sdf.Box3D(sdf.V3{
 		X: 9,
 		Y: slotLength + shieldLength,
-		Z: 3.1,
+		Z: 3.2,
 	}, 0)
 
 	if err != nil {
@@ -195,7 +195,7 @@ func holder() (sdf.SDF3, error) {
 		return nil, err
 	}
 
-	swCoHeight := 9.0
+	swCoHeight := 9.2
 	switchCutout = sdf.Transform3D(switchCutout, sdf.Translate3d(sdf.V3{
 		X: 0,
 		Y: slotCutoutThickness + switchCutout.BoundingBox().Size().Y/2,
